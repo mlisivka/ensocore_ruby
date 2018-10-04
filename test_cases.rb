@@ -1,5 +1,6 @@
 require_relative 'test'
 require_relative 'indices'
+require_relative 'array_with_flatten'
 
 test = Test.new
 
@@ -22,6 +23,10 @@ test.run(indices2.indices_of(8),  [0, 2])
 test.run(indices2.indices_of(21), [1, 2])
 test.run(indices2.indices_of(13), [])
 test.run(indices2.indices_of(22), [])
+
+test.run(ArrayWithFlatten.new([1, 2, 3, 4]).flatten, [1, 2, 3, 4])
+test.run(ArrayWithFlatten.new([1,[2,[3]],[4]]).flatten, [1, 2, 3, 4])
+test.run(ArrayWithFlatten.new([1,[2,[[3]]],[4]]).flatten, [1, 2, 3, 4])
 
 test.finish
 
