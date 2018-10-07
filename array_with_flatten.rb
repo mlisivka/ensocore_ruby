@@ -5,11 +5,11 @@ class ArrayWithFlatten
 
   def flatten(arr = @array, flatted = [])
     arr.each do |elem|
-      unless elem.is_a?(Array)
+      if elem.is_a?(Array)
+        flatten(elem, flatted)
+      else
         flatted << elem
-        next
       end
-      flatten(elem, flatted)
     end
 
     flatted
